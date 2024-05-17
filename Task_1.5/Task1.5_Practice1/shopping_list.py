@@ -20,7 +20,7 @@ class ShoppingList(object):
       print(item, 'is not in shopping list')
 
   def view_list(self):
-    print('Shopping List', self.list_name + ':')
+    print(self.list_name + ':')
     print('-----------------------------------')
     item = self.item
     for item in self.shopping_list:
