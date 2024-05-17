@@ -20,11 +20,9 @@ class ShoppingList(object):
       print(item, 'is not in shopping list')
 
   def view_list(self):
-    print(self.list_name + ':')
-    print('-----------------------------------')
-    item = self.item
-    for item in self.shopping_list:
-      print(item)
+      print('\nItems in ' + str(self.list_name) + '\n' + 40*'-')
+      for item in self.shopping_list:
+        print(' - ' + str(item))
 
 pet_store_list = ShoppingList('Pet Store Shopping List')
 
