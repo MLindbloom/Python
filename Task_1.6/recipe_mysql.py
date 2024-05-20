@@ -30,6 +30,7 @@ def main_menu(conn, cursor):
         print('2. Search for Recipe by Ingredient')
         print('3. Update an Existing Recipe')
         print('4. Delete a Recipe')
+        print('5. All Recipes')
         print("Type 'quit' to exit the program.")
         choice = input('\nYour choice: ')
 
@@ -41,6 +42,8 @@ def main_menu(conn, cursor):
             update_recipe(conn, cursor)
         elif choice == '4':
             delete_recipe(conn, cursor)
+        elif choice == '5':
+            view_all_recipes(conn, cursor)
         elif choice == 'quit':
             print('Quitting')
             print('\nThanks for Using Recipe App!')
@@ -182,7 +185,21 @@ def delete_recipe(conn, cursor):
     conn.commit()
     print('Deleted Recipe\n')
 
-if __name__ == "__main__":
+def view_all_recipes(conn, cursor):
+    print('\nAll recipes: ')
+    print(40*'=')
+
+    cursor.execute('SELECT * FROM Recipes')
+    results = cursor.fetchall()
+
+    for row in results:
+        print('\nID: ', row[0])
+        print('Name: ', row[1])
+        print('Ingredients: ', row[2])
+        print('Cooking Time: ', row[3])
+        print('Difficulty: ', row[4], '\n')
+
+if __name__ == '__main__':
     try:
         main_menu(conn, cursor)
     finally:
